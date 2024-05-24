@@ -70,7 +70,7 @@
     document.getElementById("contact_form").classList.add("opacity");
     document.getElementById("contact_overlay").classList.remove("display-none");
 
-    var url = "https://script.google.com/macros/s/AKfycbxloqGjdhIOJOUo8f3DUPNqOxgrhsKJArJrS3tM0Y5gW_FU9GZpfdLUX6O0xoXybRvm/exec";
+    var url = "https://script.google.com/macros/s/AKfycbyssfBDffoym3EBLMbRJ8xdrjwGDJx2ijwJfZ8r92UkZjoKko5rnEGapHBWcbBWLAZR/exec";
     var xhr = new XMLHttpRequest();
     xhr.open('POST', url);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
