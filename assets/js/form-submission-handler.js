@@ -67,6 +67,9 @@
   }
 
   function sendFormData(form, data) {
+    document.getElementById("contact_form").classList.add("opacity");
+    document.getElementById("contact_overlay").classList.remove("display-none");
+
     var url = "https://script.google.com/macros/s/AKfycbwyx515kPDRF_x3uK4DP0eprFgFBEKNRQRJqXmDgt8a9rZSeNod8GIShQl45vH14LPu/exec";
     var xhr = new XMLHttpRequest();
     xhr.open('POST', url);
@@ -88,9 +91,6 @@
         }, 3000);
       }
     };
-
-    document.getElementById("contact_form").classList.add("opacity");
-    document.getElementById("contact_overlay").classList.remove("display-none");
 
     var encoded = Object.keys(data).map(function (k) {
       return encodeURIComponent(k) + "=" + encodeURIComponent(data[k]);
