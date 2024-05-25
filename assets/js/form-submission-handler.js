@@ -67,10 +67,8 @@
   }
 
   function sendFormData(form, data) {
-    document.getElementById("contact_form").classList.add("opacity");
-    document.getElementById("contact_overlay").classList.remove("display-none");
-
-    var url = "https://script.google.com/macros/s/AKfycbyssfBDffoym3EBLMbRJ8xdrjwGDJx2ijwJfZ8r92UkZjoKko5rnEGapHBWcbBWLAZR/exec";
+  
+    var url = "https://script.google.com/macros/s/AKfycbxiilwiw4gFahwIZJ1Qb2F3e3wizgp8z3lUemcMAZopjlmc66c2Hab_Fm6vkwso2oPX/exec";
     var xhr = new XMLHttpRequest();
     xhr.open('POST', url);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -91,6 +89,9 @@
         }, 3000);
       }
     };
+
+    document.getElementById("contact_form").classList.add("opacity");
+    document.getElementById("contact_overlay").classList.remove("display-none");
 
     var encoded = Object.keys(data).map(function (k) {
       return encodeURIComponent(k) + "=" + encodeURIComponent(data[k]);
