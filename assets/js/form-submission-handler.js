@@ -67,12 +67,12 @@
   }
 
   function sendFormData(form, data) {
-  
-    var url = "https://script.google.com/macros/s/AKfycbxiilwiw4gFahwIZJ1Qb2F3e3wizgp8z3lUemcMAZopjlmc66c2Hab_Fm6vkwso2oPX/exec";
+    var url = "https://script.google.com/macros/s/AKfycbx8tfU2c9nDRB7Ojys7NSNRj6rFO9_vRuoMQX1NOe6w1qAOaqXYHT0YnJT7TTKB9HnZ/exec";
     var xhr = new XMLHttpRequest();
     xhr.open('POST', url);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
+    xhr.setRequestHeader("Referer", window.location.origin);
+  
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4 && xhr.status === 200) {
         form.reset();
@@ -81,23 +81,26 @@
         document.getElementById("form_title").classList.add("display-none");
         document.getElementById("form").classList.add("display-none");
         document.getElementById("thanks_message").classList.remove("display-none");
-
+  
         setTimeout(() => {
           document.getElementById("form_title").classList.remove("display-none");
           document.getElementById("form").classList.remove("display-none");
           document.getElementById("thanks_message").classList.add("display-none");
         }, 3000);
+      } else if (xhr.readyState === 4) {
+        console.error('Error: ' + xhr.status + ' ' + xhr.statusText);
       }
     };
-
+  
     document.getElementById("contact_form").classList.add("opacity");
     document.getElementById("contact_overlay").classList.remove("display-none");
-
+  
     var encoded = Object.keys(data).map(function (k) {
       return encodeURIComponent(k) + "=" + encodeURIComponent(data[k]);
     }).join('&');
     xhr.send(encoded);
   }
+  
 
   function loaded() {
     var forms = document.querySelectorAll("form.gform");

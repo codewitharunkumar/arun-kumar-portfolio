@@ -334,6 +334,7 @@ main {
 .avatar-box {
   background: var(--bg-gradient-onyx);
   border-radius: 20px;
+  overflow: hidden;
 }
 
 .info-content .name {
@@ -1944,5 +1945,5 @@ textarea.form-input::-webkit-resizer { display: none; }
 
 .opacity
 {
-  opacity: 40%;
+  opacity: 40%  ;
 }
