@@ -67,7 +67,7 @@
   }
 
   function sendFormData(form, data) {
-    var url = "https://script.google.com/macros/s/AKfycbx8tfU2c9nDRB7Ojys7NSNRj6rFO9_vRuoMQX1NOe6w1qAOaqXYHT0YnJT7TTKB9HnZ/exec";
+    var url = "https://script.google.com/macros/s/AKfycbza6bRl_AkE8caTQErIHa6ofgkrUbzMD120SEEWkgw49NEWpkvo0vE9hX4U91GB00g_/exec";
     var xhr = new XMLHttpRequest();
     xhr.open('POST', url);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

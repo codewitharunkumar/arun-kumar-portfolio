@@ -27,6 +27,7 @@ const modalImg = document.querySelector("[data-modal-img]");
 const modalTitle = document.querySelector("[data-modal-title]");
 const modalDate = document.querySelector("[data-modal-date]");
 const modalText = document.querySelector("[data-modal-text]");
+const modalRating = document.querySelector("[data-modal-rating]");
 
 // modal toggle function
 const testimonialsModalFunc = function () {
@@ -34,16 +35,32 @@ const testimonialsModalFunc = function () {
   overlay.classList.toggle("active");
 }
 
+// function to set star rating
+const setRatingStars = (ratingContainer) => {
+  const rating = parseFloat(ratingContainer.dataset.testimonialsRating);
+  const starPercentage = (rating / 5) * 100;
+  const starsInner = ratingContainer.querySelector(".stars-inner");
+  starsInner.style.width = `${starPercentage}%`;
+}
+
+// set stars for all testimonials items
+document.querySelectorAll(".star-rating").forEach(setRatingStars);
+
 // add click event to all modal items
 for (let i = 0; i < testimonialsItem.length; i++) {
 
   testimonialsItem[i].addEventListener("click", function () {
-
+    const rating = this.querySelector("[data-testimonials-rating]").dataset.testimonialsRating;
     modalImg.src = this.querySelector("[data-testimonials-avatar]").src;
     modalImg.alt = this.querySelector("[data-testimonials-avatar]").alt;
     modalTitle.innerHTML = this.querySelector("[data-testimonials-title]").innerHTML;
     modalDate.innerHTML = this.querySelector("[data-testimonials-date]").innerHTML;
     modalText.innerHTML = this.querySelector("[data-testimonials-text]").innerHTML;
+     const modalStarsOuter = document.querySelector(".modal-star-rating");
+     modalStarsOuter.style.margin='0px'
+     const modalStarsInner = modalStarsOuter.querySelector(".stars-inner");
+     modalStarsInner.style.width = `${(rating / 5) * 100}%`;
+    modalRating.innerHTML = `(${rating})`;
 
     testimonialsModalFunc();
 
