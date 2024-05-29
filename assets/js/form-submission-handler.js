@@ -39,6 +39,7 @@
     formData.formGoogleSheetName = form.dataset.sheet || "responses";
     formData.formGoogleSendEmail = form.dataset.email || "";
 
+    console.log('Form data:', formData);
     return { data: formData, honeypot: honeypot };
   }
 
@@ -57,6 +58,7 @@
     fetch('https://api.ipify.org?format=json')
       .then(response => response.json())
       .then(ipData => {
+        console.log('IP address fetched:', ipData.ip);
         data.ipAddress = ipData.ip;
         sendFormData(form, data);
       })
@@ -67,7 +69,7 @@
   }
 
   function sendFormData(form, data) {
-    var url = "https://script.google.com/macros/s/AKfycbza6bRl_AkE8caTQErIHa6ofgkrUbzMD120SEEWkgw49NEWpkvo0vE9hX4U91GB00g_/exec";
+    var url = "https://script.google.com/macros/s/AKfycbwzKm5wQrV7_okVyufs2Y8e0C8p3uJl7H_FLxMEOOy7qjdfpEB1t3wW1FupNBPjV59I/exec";
     var xhr = new XMLHttpRequest();
     xhr.open('POST', url);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -75,6 +77,7 @@
   
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4 && xhr.status === 200) {
+        console.log('Form submitted successfully:', xhr.responseText);
         form.reset();
         document.getElementById("contact_form").classList.remove("opacity");
         document.getElementById("contact_overlay").classList.add("display-none");
@@ -88,7 +91,7 @@
           document.getElementById("thanks_message").classList.add("display-none");
         }, 3000);
       } else if (xhr.readyState === 4) {
-        console.error('Error: ' + xhr.status + ' ' + xhr.statusText);
+        console.error('Error submitting form:', xhr.status, xhr.statusText);
       }
     };
   
@@ -98,9 +101,9 @@
     var encoded = Object.keys(data).map(function (k) {
       return encodeURIComponent(k) + "=" + encodeURIComponent(data[k]);
     }).join('&');
+    console.log('Sending data to Google Apps Script:', encoded);
     xhr.send(encoded);
   }
-  
 
   function loaded() {
     var forms = document.querySelectorAll("form.gform");
