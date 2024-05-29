@@ -662,6 +662,10 @@ main {
   margin-bottom: 7px;
 }
 
+.star-rating {
+  margin-left: 0px;
+}
+
 .testimonials-text {
   color: var(--light-gray);
   font-size: var(--fs-6);
@@ -1631,7 +1635,9 @@ textarea.form-input::-webkit-resizer {
   .modal-container {
     padding: 20px;
   }
-
+  .star-rating {
+    margin-left: 95px;
+  }
   .testimonials-modal {
     display: flex;
     justify-content: flex-start;
@@ -2200,6 +2206,9 @@ textarea.form-input::-webkit-resizer {
   font-weight: var(--fw-500);
 }
 
+
+
+/*Contact Form*/
 #contact_form {
   position: relative;
 }
@@ -2240,8 +2249,9 @@ textarea.form-input::-webkit-resizer {
   opacity: 40%;
 }
 
+
+/*Star Rating*/
 .star-rating {
-  margin-left: 95px;
   margin-top: 0px;
   margin-bottom: 10px;
   display: flex;
