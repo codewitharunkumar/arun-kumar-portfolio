@@ -60,9 +60,6 @@
 
     var xhr = new XMLHttpRequest();
     xhr.open('POST', url);
-
-    // Set the Referer header
-    xhr.setRequestHeader("Referer", window.location.origin);
   
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4 && xhr.status === 200) {;
