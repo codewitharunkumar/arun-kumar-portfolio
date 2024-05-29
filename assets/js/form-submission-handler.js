@@ -36,7 +36,6 @@
     });
 
     formData.formDataNameOrder = JSON.stringify(fields);
-    formData.formGoogleSheetName = form.dataset.sheet || "responses";
     formData.formGoogleSendEmail = form.dataset.email || "";
 
     console.log('Form data:', formData);
@@ -55,28 +54,18 @@
 
     disableAllButtons(form);
 
-    fetch('https://api.ipify.org?format=json')
-      .then(response => response.json())
-      .then(ipData => {
-        console.log('IP address fetched:', ipData.ip);
-        data.ipAddress = ipData.ip;
-        sendFormData(form, data);
-      })
-      .catch(error => {
-        console.error('Error fetching IP address:', error);
-        sendFormData(form, data);
-      });
-  }
-
-  function sendFormData(form, data) {
+    // Get the action URL from data-sheet attribute
     var url = "https://script.google.com/macros/s/AKfycbwzKm5wQrV7_okVyufs2Y8e0C8p3uJl7H_FLxMEOOy7qjdfpEB1t3wW1FupNBPjV59I/exec";
+    var sheetName = form.dataset.sheet || "responses"; // Get the sheet name from data-sheet attribute
+
     var xhr = new XMLHttpRequest();
     xhr.open('POST', url);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    // Set the Referer header
     xhr.setRequestHeader("Referer", window.location.origin);
   
     xhr.onreadystatechange = function () {
-      if (xhr.readyState === 4 && xhr.status === 200) {
+      if (xhr.readyState === 4 && xhr.status === 200) {;
         console.log('Form submitted successfully:', xhr.responseText);
         form.reset();
         document.getElementById("contact_form").classList.remove("opacity");
@@ -102,7 +91,7 @@
       return encodeURIComponent(k) + "=" + encodeURIComponent(data[k]);
     }).join('&');
     console.log('Sending data to Google Apps Script:', encoded);
-    xhr.send(encoded);
+    xhr.send("sheetName=" + encodeURIComponent(sheetName) + "&" + encoded);
   }
 
   function loaded() {
@@ -110,7 +99,7 @@
     for (var i = 0; i < forms.length; i++) {
       forms[i].addEventListener("submit", handleFormSubmit, false);
     }
-  }
+  };
   document.addEventListener("DOMContentLoaded", loaded, false);
 
   function disableAllButtons(form) {
