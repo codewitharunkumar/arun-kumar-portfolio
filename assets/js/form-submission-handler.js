@@ -54,7 +54,7 @@
 
     disableAllButtons(form);
 
-    var url = "https://script.google.com/macros/s/AKfycbzElDa5Y3uWoGmnj_SyHMhlJpbkvKQowp2scB-GNQK2AwNcHW6CGG4TgPJfosoCX_V9/exec";
+    var url = "https://script.google.com/macros/s/AKfycbwrxLP53SYL3TCE6iQb3SqC61aBZ6S6xsZELLULPcizkPkVotwAOmRFCjZ9Da6lgmMB/exec";
     var sheetName = form.dataset.sheet || "responses";
 
     var xhr = new XMLHttpRequest();
