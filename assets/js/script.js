@@ -56,10 +56,10 @@ for (let i = 0; i < testimonialsItem.length; i++) {
     modalTitle.innerHTML = this.querySelector("[data-testimonials-title]").innerHTML;
     modalDate.innerHTML = this.querySelector("[data-testimonials-date]").innerHTML;
     modalText.innerHTML = this.querySelector("[data-testimonials-text]").innerHTML;
-     const modalStarsOuter = document.querySelector(".modal-star-rating");
-     modalStarsOuter.style.margin='0px'
-     const modalStarsInner = modalStarsOuter.querySelector(".stars-inner");
-     modalStarsInner.style.width = `${(rating / 5) * 100}%`;
+    const modalStarsOuter = document.querySelector(".modal-star-rating");
+    modalStarsOuter.style.margin = '0px'
+    const modalStarsInner = modalStarsOuter.querySelector(".stars-inner");
+    modalStarsInner.style.width = `${(rating / 5) * 100}%`;
     modalRating.innerHTML = `(${rating})`;
 
     testimonialsModalFunc();

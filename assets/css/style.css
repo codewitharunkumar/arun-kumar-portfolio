@@ -1635,9 +1635,11 @@ textarea.form-input::-webkit-resizer {
   .modal-container {
     padding: 20px;
   }
+
   .star-rating {
     margin-left: 95px;
   }
+
   .testimonials-modal {
     display: flex;
     justify-content: flex-start;
@@ -2257,7 +2259,7 @@ textarea.form-input::-webkit-resizer {
   display: flex;
   align-items: center;
   position: relative;
-  font-size: 15px; 
+  font-size: 15px;
 }
 
 .stars-outer {
@@ -2273,11 +2275,11 @@ textarea.form-input::-webkit-resizer {
   left: 0;
   white-space: nowrap;
   overflow: hidden;
-  color: var(--orange-yellow-crayola); 
+  color: var(--orange-yellow-crayola);
 }
 
 .stars-outer::before {
-  content: "\f005 \f005 \f005 \f005 \f005"; 
+  content: "\f005 \f005 \f005 \f005 \f005";
 }
 
 .stars-inner::before {

@@ -54,15 +54,14 @@
 
     disableAllButtons(form);
 
-    // Get the action URL from data-sheet attribute
-    var url = "https://script.google.com/macros/s/AKfycbwzKm5wQrV7_okVyufs2Y8e0C8p3uJl7H_FLxMEOOy7qjdfpEB1t3wW1FupNBPjV59I/exec";
-    var sheetName = form.dataset.sheet || "responses"; // Get the sheet name from data-sheet attribute
+    var url = "https://script.google.com/macros/s/AKfycbzElDa5Y3uWoGmnj_SyHMhlJpbkvKQowp2scB-GNQK2AwNcHW6CGG4TgPJfosoCX_V9/exec";
+    var sheetName = form.dataset.sheet || "responses";
 
     var xhr = new XMLHttpRequest();
     xhr.open('POST', url);
-  
+
     xhr.onreadystatechange = function () {
-      if (xhr.readyState === 4 && xhr.status === 200) {;
+      if (xhr.readyState === 4 && xhr.status === 200) {
         console.log('Form submitted successfully:', xhr.responseText);
         form.reset();
         document.getElementById("contact_form").classList.remove("opacity");
@@ -70,7 +69,7 @@
         document.getElementById("form_title").classList.add("display-none");
         document.getElementById("form").classList.add("display-none");
         document.getElementById("thanks_message").classList.remove("display-none");
-  
+
         setTimeout(() => {
           document.getElementById("form_title").classList.remove("display-none");
           document.getElementById("form").classList.remove("display-none");
@@ -80,10 +79,10 @@
         console.error('Error submitting form:', xhr.status, xhr.statusText);
       }
     };
-  
+
     document.getElementById("contact_form").classList.add("opacity");
     document.getElementById("contact_overlay").classList.remove("display-none");
-  
+
     var encoded = Object.keys(data).map(function (k) {
       return encodeURIComponent(k) + "=" + encodeURIComponent(data[k]);
     }).join('&');
