@@ -205,7 +205,7 @@
 
         <section class="about-text text-justify">
           <p>
-            I am a Software Engineer Lead with 9+ years of experience building scalable Java microservices, high-performance backend systems, and data-driven applications. My core strengths include Java, Spring Boot, REST APIs, microservices, multithreading, Elasticsearch, SQL/MySQL, and Hibernate.
+            I am a Software Engineer Lead with <span id="years-of-experience">9+ years</span> of experience building scalable Java microservices, high-performance backend systems, and data-driven applications. My core strengths include Java, Spring Boot, REST APIs, microservices, multithreading, Elasticsearch, SQL/MySQL, and Hibernate.
           </p>
 
           <p>
@@ -1194,6 +1194,22 @@
     - custom js link
   -->
   <script src="./assets/js/script.js"></script>
+  <script>
+    // Automatically calculate completed years of professional experience from 1 June 2017.
+    (function () {
+      const careerStartYear = 2017;
+      const careerStartMonth = 6; // June (1-based)
+      const now = new Date();
+      let yearsOfExperience = now.getFullYear() - careerStartYear;
+      if ((now.getMonth() + 1) < careerStartMonth) {
+        yearsOfExperience -= 1;
+      }
+      const experienceElement = document.getElementById('years-of-experience');
+      if (experienceElement) {
+        experienceElement.textContent = yearsOfExperience + '+ years';
+      }
+    })();
+  </script>
 
   <!--
     - ionicon link
